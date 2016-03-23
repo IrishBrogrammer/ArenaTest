@@ -40,31 +40,19 @@ def getYseraTest( outputPath ) :
     print " got Ysera "
 
 
-print "Hello World "
 
 outputPath = str( sys.argv[1] )
 response  = getAllCards()
 
 setsToPrint = [ "Classic","Naxxramas","The League of Explorers","Basic","The Grand Tournament","Goblins vs Gnomes"]
 
-print "Size " + str( len( response.body ) )
-
-
-testSet = response.body["Classic"]
-
-print len(testSet)
-
-
+cards = []
 for set in setsToPrint :
     print set
     print len(response.body[set])
-
+    for card in response.body[set] :
+        cards.append( getCardInfo( card ))
 
 
 with open( outputPath , 'w' ) as f :
-    f.write( str( response.body ) )
-
-
-
-
-print "Bye world "
+    f.write( str(cards) )
