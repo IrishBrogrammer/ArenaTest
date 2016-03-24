@@ -11,7 +11,7 @@ def getCardInfo( cardObj ) :
 def getCard() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards/ysera",
                             headers={
-                            "X-Mashape-Key" : "INSERT_KEY",
+                            "X-Mashape-Key" : "NdFTbiO6tkmshspvsGbFeKdpKGqip1nEdkBjsnTUctqfAU0Fq3",
                             "Accept" : "application/json"
                             })
     return response
@@ -20,7 +20,7 @@ def getCard() :
 def getAllCards() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards",
                             headers={
-                            "X-Mashape-Key" : "INSERT_KEY",
+                            "X-Mashape-Key" : "NdFTbiO6tkmshspvsGbFeKdpKGqip1nEdkBjsnTUctqfAU0Fq3",
                             "Accept" : "application/json"
                             },
                             params={
@@ -30,21 +30,23 @@ def getAllCards() :
 
 
 def getYseraTest( outputPath ) :
-    print " Getting Ysera "
     response = getCard()
     responseDict = response.body[0]
 
     with open( outputPath , 'w' ) as f :
          f.write( getCardInfo( responseDict ))
 
-    print " got Ysera "
 
 
 
 outputPath = str( sys.argv[1] )
 response  = getAllCards()
 
-setsToPrint = [ "Classic","Naxxramas","The League of Explorers","Basic","The Grand Tournament","Goblins vs Gnomes"]
+setsToPrint = [ "Classic","Naxxramas","The League of Explorers","Basic","The Grand Tournament","Goblins vs Gnomes","Blackrock Mountain"]
+
+
+for set in response.body :
+    print set
 
 cards = []
 for set in setsToPrint :
