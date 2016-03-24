@@ -16,6 +16,7 @@ def getCard() :
                             })
     return response
 
+NdFTbiO6tkmshspvsGbFeKdpKGqip1nEdkBjsnTUctqfAU0Fq3
 
 def getAllCards() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards",
@@ -37,24 +38,24 @@ def getYseraTest( outputPath ) :
          f.write( getCardInfo( responseDict ))
 
 
+def getAllCards( outputPath ) :
+    response = getAllCards()
+
+    setsToPrint = [ "Classic","Naxxramas","The League of Explorers","Basic","The Grand Tournament","Goblins vs Gnomes","Blackrock Mountain"]
+
+    for set in response.body :
+        print set
+
+    cards = []
+    for set in setsToPrint :
+        print set
+        print len(response.body[set])
+        for card in response.body[set] :
+            cards.append( getCardInfo( card ))
+
+    with open( outputPath , 'w' ) as f :
+        f.write( str(cards) )
 
 
 outputPath = str( sys.argv[1] )
-response  = getAllCards()
-
-setsToPrint = [ "Classic","Naxxramas","The League of Explorers","Basic","The Grand Tournament","Goblins vs Gnomes","Blackrock Mountain"]
-
-
-for set in response.body :
-    print set
-
-cards = []
-for set in setsToPrint :
-    print set
-    print len(response.body[set])
-    for card in response.body[set] :
-        cards.append( getCardInfo( card ))
-
-
-with open( outputPath , 'w' ) as f :
-    f.write( str(cards) )
+getAllCards( outputPath )
