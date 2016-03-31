@@ -3,6 +3,7 @@ import sys,getopt
 import json
 import os.path
 
+# Test that a draft pick has at least 3 options and the answer for the pick is in the options provided
 def testPick( pick ) :
 
     options = pick["options"]
@@ -17,25 +18,31 @@ def testPick( pick ) :
 
     return True
 
+# Test all the picks in a draft to ensure its a valid draftPicks
 def runTest( draft ) :
     for pick in draft :
         if testPick( pick ) == False :
             return False
     return True
 
+# Load a json file and test if it is a valid draft
 def testFile( fileName ) :
-    print " Testing File " + fileName
-
     with open(fileName) as data_file :
         data = json.load( data_file)
-        print "Testing " + data["name"]
         return runTest( data["draftPicks"])
 
+# Entry point of application.
 def main() :
-    fileName = str( sys.argv[1])
+    hasPassedAll = True
 
-    if ( testFile( fileName ) ) :
-        print "All configs are ok"
-    else :
-        print " Validation failed on file " + fileName
+    for subdir, dirs , files in os.walk( "." ) :
+        for filez in [ f for f in files if f.endswith(".json") ] :
+            fullPath = os.path.join( subdir, filez)
+            if  testFile( fullPath ) == False :
+                print "File : " + fullPath + " has failed tests"
+                hasPassedAll = False
+
+    if hasPassedAll :
+        print " All tests passed "
+
 main();
