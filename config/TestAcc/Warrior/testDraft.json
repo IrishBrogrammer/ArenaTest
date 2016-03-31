@@ -12,10 +12,18 @@
         {
             "options" : [
               "card1",
-              "card2"
+              "card2",
               "card3"
             ],
-            "answer" : "card1"
+            "answer" : "card2"
+        },
+        {
+            "options" : [
+              "card1",
+              "card2",
+              "card3"
+            ],
+            "answer" : "card3"
         }
       ]
 }
