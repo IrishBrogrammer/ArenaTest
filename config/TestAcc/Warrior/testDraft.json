@@ -1,0 +1,21 @@
+{
+      "name" : "testDraft",
+      "draftPicks" : [
+        {
+            "options" : [
+              "card1",
+              "card2",
+              "card3"
+            ],
+            "answer" : "card1"
+        },
+        {
+            "options" : [
+              "card1",
+              "card2"
+              "card3"
+            ],
+            "answer" : "card1"
+        }
+      ]
+}
