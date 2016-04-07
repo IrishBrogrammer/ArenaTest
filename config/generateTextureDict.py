@@ -23,10 +23,7 @@ def main():
                     for card in options :
                         picks.append( card )
 
-
-    print "Runnig test "
-    uniques = set(picks)
-    for newCard in uniques :
+    for newCard in set(picks) :
         print newCard
 
 
