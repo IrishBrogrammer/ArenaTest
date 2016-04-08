@@ -3,9 +3,10 @@ import json
 import unirest
 
 def getCardInfo( cardObj ) :
-    name = cardObj["name"]
-    url  = cardObj["img"]
-    return str( name ) + " : " + str( url )
+    NewCard = {}
+    NewCard["Name"] = cardObj["name"]
+    NewCard["URL"] = cardObj["img"]
+    return NewCard
 
 def getCard() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards/ysera",
@@ -51,7 +52,7 @@ def getAllCards( outputPath ) :
             cards.append( getCardInfo( card ))
 
     with open( outputPath , 'w' ) as f :
-        f.write( str(cards) )
+        f.write( json.dumps( cards , sort_keys=True , indent=4 , separators=(',',':') ))
 
 
 outputPath = str( sys.argv[0] )
