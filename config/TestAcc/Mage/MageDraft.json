@@ -3,27 +3,27 @@
       "draftPicks" : [
         {
             "options" : [
-              "card1",
-              "card2",
-              "card3"
+              "Ysera",
+              "Lightwarden",
+              "Naturalize"
             ],
-            "answer" : "card1"
+            "answer" : "Lightwarden"
         },
         {
             "options" : [
-              "card4",
-              "card2",
-              "card3"
+              "Secretkeeper",
+              "Shieldbearer",
+              "Armorsmith"
             ],
-            "answer" : "card2"
+            "answer" : "Armorsmith"
         },
         {
             "options" : [
-              "card1",
-              "card2",
-              "card3"
+              "Crazed Alchemist",
+              "Demonfire",
+              "Doomsayer"
             ],
-            "answer" : "card3"
+            "answer" : "Doomsayer"
         }
       ]
 }
