@@ -55,5 +55,5 @@ def getAllCards( outputPath ) :
         f.write( json.dumps( cards , sort_keys=True , indent=4 , separators=(',',':') ))
 
 
-outputPath = str( sys.argv[0] )
+outputPath = str( sys.argv[1] )
 getAllCards( outputPath )
