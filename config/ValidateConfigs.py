@@ -35,7 +35,7 @@ def testFile( fileName ) :
 def main() :
     hasPassedAll = True
 
-    for subdir, dirs , files in os.walk( "." ) :
+    for subdir, dirs , files in os.walk( "TestAcc" ) :
         for filez in [ f for f in files if f.endswith(".json") ] :
             fullPath = os.path.join( subdir, filez)
             if  testFile( fullPath ) == False :
