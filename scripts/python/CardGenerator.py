@@ -4,14 +4,14 @@ import unirest
 
 def getCardInfo( cardObj ) :
     NewCard = {}
-    NewCard["Name"] = cardObj["name"]
-    NewCard["URL"] = cardObj["img"]
+    cardName = cardObj["name"]
+    NewCard[cardName] = cardObj["img"]
     return NewCard
 
 def getCard() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards/ysera",
                             headers={
-                            "X-Mashape-Key" : "INSERT_KEY",
+                            "X-Mashape-Key" : "NdFTbiO6tkmshspvsGbFeKdpKGqip1nEdkBjsnTUctqfAU0Fq3",
                             "Accept" : "application/json"
                             })
     return response
@@ -19,7 +19,7 @@ def getCard() :
 def downloadAllCards() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards",
                             headers={
-                            "X-Mashape-Key" : "INSERT_KEY",
+                            "X-Mashape-Key" : "NdFTbiO6tkmshspvsGbFeKdpKGqip1nEdkBjsnTUctqfAU0Fq3",
                             "Accept" : "application/json"
                             },
                             params={
@@ -39,7 +39,7 @@ def getYseraTest( outputPath ) :
 def getAllCards( outputPath ) :
     response = downloadAllCards()
 
-    setsToPrint = [ "Classic","Naxxramas","The League of Explorers","Basic","The Grand Tournament","Goblins vs Gnomes","Blackrock Mountain"]
+    setsToPrint = [ "Classic","Naxxramas","The League of Explorers","Basic","The Grand Tournament","Goblins vs Gnomes","Blackrock Mountain","Whispers of the Old Gods"]
 
     for set in response.body :
         print set
@@ -53,6 +53,7 @@ def getAllCards( outputPath ) :
 
     with open( outputPath , 'w' ) as f :
         f.write( json.dumps( cards , sort_keys=True , indent=4 , separators=(',',':') ))
+
 
 
 outputPath = str( sys.argv[1] )

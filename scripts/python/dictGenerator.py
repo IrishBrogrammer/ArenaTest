@@ -10,4 +10,4 @@ filename = str( sys.argv[0])
 with open( filename ) as data_file :
     data = json.load( data_file )
 
-    print data
+    
