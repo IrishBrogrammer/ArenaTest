@@ -5,8 +5,7 @@ import unirest
 def getCardInfo( cardObj ) :
     NewCard = {}
     cardName = cardObj["name"]
-    NewCard["name"] = cardObj["name"]
-    NewCard["url"] = cardObj["img"]
+    NewCard[cardName] = cardObj["img"]
     return NewCard
 
 def getCard() :
