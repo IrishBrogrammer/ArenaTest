@@ -20,7 +20,7 @@ def getCard() :
 def downloadAllCards() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards",
                             headers={
-                            "X-Mashape-Key" : "NdFTbiO6tkmshspvsGbFeKdpKGqip1nEdkBjsnTUctqfAU0Fq3",
+                            "X-Mashape-Key" : "INSERT_KEY",
                             "Accept" : "application/json"
                             },
                             params={
