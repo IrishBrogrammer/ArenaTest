@@ -2,11 +2,12 @@ import sys
 import json
 import unirest
 
-def getCardInfo( cardObj ) :
+def getCardInfo( cardParent , cardObj ) :
     NewCard = {}
     cardName = cardObj["name"]
     NewCard[cardName] = cardObj["img"]
-    return NewCard
+    cardParent[cardName] = cardObj["img"]
+    return cardParent
 
 def getCard() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards/ysera",
@@ -19,7 +20,7 @@ def getCard() :
 def downloadAllCards() :
     response = unirest.get( "https://omgvamp-hearthstone-v1.p.mashape.com/cards",
                             headers={
-                            "X-Mashape-Key" : "INSERT_KEY",
+                            "X-Mashape-Key" : "NdFTbiO6tkmshspvsGbFeKdpKGqip1nEdkBjsnTUctqfAU0Fq3",
                             "Accept" : "application/json"
                             },
                             params={
@@ -44,12 +45,12 @@ def getAllCards( outputPath ) :
     for set in response.body :
         print set
 
-    cards = []
+    cards = {}
     for set in setsToPrint :
         print set
         print len(response.body[set])
         for card in response.body[set] :
-            cards.append( getCardInfo( card ))
+            cards =  getCardInfo( cards , card )
 
     with open( outputPath , 'w' ) as f :
         f.write( json.dumps( cards , sort_keys=True , indent=4 , separators=(',',':') ))
