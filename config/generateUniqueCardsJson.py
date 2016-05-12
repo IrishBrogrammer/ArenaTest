@@ -6,7 +6,6 @@ import os.path
 
 # Go through all the configs and generate a json file that contains the ids of all the cards in the configs
 def main( outputPath ):
-
     picks = []
     for subdir, dirs , files in os.walk( "TestAcc" ) :
         for filez in [ f for f in files if f.endswith(".json") ] :
@@ -29,5 +28,9 @@ def main( outputPath ):
         f.write( json.dumps( uniqueCards , sort_keys=True , indent=4 , separators=(',',':') ))
 
 
-outputPath = str( sys.argv[1] )
-main( "allCards.json" )
+try:
+    outputPath = str( sys.argv[1] )
+    main( "allCards.json" )
+except Exception as e:
+    print(e)
+
